@@ -207,7 +207,7 @@ func initEmailClient() {
 }
 
 func initEmailTemplate() {
-	buf, err := ioutil.ReadFile("./email.tpl")
+	buf, err := ioutil.ReadFile("email.htmlt")
 	check(err)
 
 	emailTemplate, err = template.New("email").Parse(string(buf))
@@ -217,7 +217,6 @@ func initEmailTemplate() {
 func sendEmail(toAddress, subject, body string) {
 	msg := goemail.NewHTMLMessage(cfg["mailaddr"], subject, body)
 	msg.AddTo(toAddress)
-	msg.AddAttachmentFromFile("./secret-santa.png")
 
 	msg.SetName(smtpClient.mailName)
 	err := smtpClient.client.Send(msg)
