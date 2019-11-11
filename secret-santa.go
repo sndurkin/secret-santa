@@ -159,7 +159,7 @@ func sendEmails() {
 
 		if len(match.Wishlist) == 0 {
 			templateData.Wishlist = []string{
-				"(not available)",
+				"(not provided)",
 			}
 		} else {
 			templateData.Wishlist = strings.Split(match.Wishlist, ",")
